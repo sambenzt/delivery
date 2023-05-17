@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      width: 100%;
+      height: 100vh;
+      background-color: aqua;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div><button onclick="request()">Test</button></div>
+
+<script>
+  function request() {
+    const url = 'http://0.0.0.0:8086/v1/pedya/pedidonuevo/order/TEST-1234'; // URL del endpoint de la API
+
+    const data = {
+      nombre: 'John Doe',
+      edad: 30,
+      email: 'johndoe@example.com'
+    };
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log('Respuesta del servidor:', result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+  }
+</script>  
+</body>
+</html>
